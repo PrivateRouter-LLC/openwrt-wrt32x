@@ -12,7 +12,7 @@ jobs:
 
             - name: Build target images
               run: |
-                bash build_gli_shadow.sh
+                bash build_linksyswr32x.sh
 
             - name: TAR output
               run: tar -cvf images.tar images
