@@ -1,0 +1,47 @@
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option ula_prefix 'fdab:e8e3:3b3c::/48'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'lan1'
+	list ports 'lan2'
+	list ports 'lan3'
+	list ports 'lan4'
+
+config interface 'lan'
+	option device 'br-lan'
+	option proto 'static'
+	option ipaddr '192.168.8.1/24'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+	option hostname 'PrivateRouter'
+	option ipaddr '192.168.8.1'
+	option device 'br-lan'
+	list dns '8.8.8.8'
+	list dns '8.8.4.4'
+	list dns '1.1.1.1'
+
+config device
+	option name 'wan'
+	option macaddr '62:38:e0:c8:88:20'
+
+config interface 'wan'
+	option device 'wan'
+	option proto 'dhcp'
+
+config interface 'wan6'
+	option device 'wan'
+	option proto 'dhcpv6'
+
+config interface 'TorGuard_OVPN'
+	option proto 'none'
+	option device 'tun0'
+
