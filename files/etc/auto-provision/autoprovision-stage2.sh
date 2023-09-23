@@ -43,6 +43,16 @@ installPackages()
    echo "░░░░░   ░░░░░  ░░░░░░    ░░░░░░░░    ░░░░░   ░░░░░░  ░░░░░            "
 
    opkg update
+   #install mesh support
+   opkg remove wpad
+   opkg remove wpad wpad-basic
+   opkg remove wpad-basic-openssl
+   opkg remove wpad-basic-wolfssl
+   opkg remove wpad-wolfssl
+   opkg install wpad-mesh-openssl
+   opkg install kmod-batman-adv
+   opkg install batctl
+   opkg install avahi-autoipd
    #Go Go Packages
    opkg install acme attr avahi-dbus-daemon base-files busybox ca-bundle certtool cgi-io curl davfs2 dbus
 
